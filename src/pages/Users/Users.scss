@@ -1,0 +1,11 @@
+.tab-list {
+  .tab-item {
+    color: #bbbbbb;
+
+    &-active {
+      color: #3ea635;
+      font-weight: 600;
+      border-bottom: 4px solid #3ea635;
+    }
+  }
+}

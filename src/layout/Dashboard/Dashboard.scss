@@ -1,0 +1,11 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 214px 1fr;
+    grid-template-rows: 110px 1fr;
+    grid-template-areas:
+      "sidebar navbar"
+      "sidebar main";
+    height: 100vh;
+  }
+  
+  
