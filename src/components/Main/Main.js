@@ -1,6 +1,6 @@
 import React from "react";
 import "./Main.scss";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { Statistics } from "../../pages/Statistics/Statistics";
 import { Transactions } from "../../pages/Transactions/Transactions";
 import { Offers } from "../../pages/Offers/Offers";
@@ -17,10 +17,8 @@ export const Main = () => {
         <Route path="/offers" component={Offers} />
         <Route path="/news" component={News} />
         <Route path="/contact" component={Contact} />
-        <Route exact path="/" component={Users} />
-        <Route>
-            <h1>Not found</h1>
-        </Route>
+        <Route path="/users" component={Users} />
+        <Redirect from="/" to="/users" />
       </Switch>
     </div>
   );

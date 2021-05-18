@@ -2,65 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './assets/scss/buttons';
+@import './assets/scss/forms';
+@import './assets/scss/widgets';
+@import './assets/scss/colors';
+
 :root {
   font-size: 16px;
 }
 
-.table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-
-  td,
-  th {
-    text-align: left;
-    padding: 8px;
-  }
-
-  tr {
-    border-bottom: 1px solid #eeeeee;
-    border-top: 1px solid #eeeeee;
-
-    &:first-of-type {
-      border-bottom: 1px solid #3ea635;
+.i {
+  &-w {
+    &-full {
+      width: 100% !important;
     }
-
-    .row-item {
-      padding-top: 1.5rem !important;
-      padding-bottom: 1.5rem !important;
+    &-1 {
+      width: 144px !important;
+    }
+    &-2 {
+      width: 172px !important;
     }
   }
-}
 
-.pagination {
-  .page {
-    color: #aaaaaa;
+  &-max-w {
+    &-1 {
+      max-width: 650px !important;
+    }
   }
 
-  .page-active {
-    color: #444444;
+  &-p {
+    &x-1 {
+      padding-left: 60px !important;
+      padding-right: 60px !important;
+    }
   }
-}
-
-.custom-bottom {
-  &-1 {
-    font-weight: 600 !important;
-    background-color: #3ea635 !important;
-    color: #ffffff !important;
-    padding-left: 40px !important;
-    padding-right: 40px !important;
-  }
-
-  &-2 {
-    font-weight: 600 !important;
-    background-color: #ffff !important;
-    color: #3ea635 !important;
-  }
-}
-
-.custom-input {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 0.5rem;
-  background-color: #eeeeee;
 }

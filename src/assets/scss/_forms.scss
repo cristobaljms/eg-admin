@@ -1,0 +1,20 @@
+@import "./colors";
+
+.custom-input-group {
+  margin-bottom: 1.25rem;
+}
+.custom-label {
+  margin-bottom: 0.125rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.custom-input {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 0.5rem;
+  background-color: $gray-200;
+}

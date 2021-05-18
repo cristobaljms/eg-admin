@@ -1,0 +1,31 @@
+@import "./colors";
+
+.btn {
+  font-size: 1.25rem;
+  padding-top: 2px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0 2rem;
+
+  &-1 {
+    background-color: $green-100;
+    color: #ffffff;
+  }
+
+  &-2 {
+    background-color: #ffff;
+    color: $green-100;
+    border: 2px solid $green-100;
+  }
+
+  &-3 {
+    background-color: #ffff;
+    border: 2px solid $orange-100;
+    color: $orange-100;
+  }
+}

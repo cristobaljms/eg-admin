@@ -1,0 +1,37 @@
+@import "./colors";
+
+.table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+  td,
+  th {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr {
+    border-bottom: 1px solid $gray-200;
+    border-top: 1px solid $gray-200;
+
+    &:first-of-type {
+      border-bottom: 1px solid $green-100;
+    }
+
+    .row-item {
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+  }
+}
+
+.pagination {
+  .page {
+    color: $gray-100;
+  }
+
+  .page-active {
+    color: $gray-300;
+  }
+}

@@ -1,5 +1,19 @@
-.sidebar{
-    grid-area: sidebar;
-    box-shadow: 7px 0px 8px rgba(0, 0, 0, 0.16);
+.sidebar {
+  grid-area: sidebar;
+  box-shadow: 7px 0px 8px rgba(0, 0, 0, 0.16);
+  overflow: auto;
 }
 
+.active-icon {
+  display: none;
+}
+
+.active-link {
+  .active-icon {
+    display: block;
+  }
+
+  .inactive-icon {
+    display: none;
+  }
+}
