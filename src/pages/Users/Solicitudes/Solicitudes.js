@@ -1,125 +1,20 @@
 import React, { useState } from "react";
-import ExcelIcon from "../../../assets/img/common/excel-icon.svg";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Drawer, Fade, Modal } from "@material-ui/core";
+import ExcelIcon from "../../../assets/img/common/excel-icon.svg";
+import { Drawer } from "@material-ui/core";
 import { Paginator } from "../../../components/Paginator/Paginator";
-
+import { FiltroSolicitudes } from "../../../components/Drawers/FiltroSolicitudes";
+import { UsuarioAprobado } from "../../../components/Modales/UsuarioAprobado/UsuarioAprobado";
 import "./Solicitudes.scss";
+
 
 export const Solicitudes = () => {
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState("");
   const [drawerFilter, setDrawerFilter] = useState(false);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  const [open, setOpen] = React.useState(false);
-
-  const data = [
-    {
-      id: 1,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Proveedor",
-    },
-    {
-      id: 2,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Cliente/Proveedor",
-    },
-    {
-      id: 3,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Proveedor",
-    },
-    {
-      id: 4,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Cliente",
-    },
-    {
-      id: 5,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Proveedor",
-    },
-    {
-      id: 6,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Proveedor",
-    },
-    {
-      id: 7,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Cliente/Proveedor",
-    },
-    {
-      id: 8,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Proveedor",
-    },
-    {
-      id: 9,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Cliente",
-    },
-    {
-      id: 10,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Cliente",
-    },
-    {
-      id: 11,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Cliente",
-    },
-    {
-      id: 12,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Cliente",
-    },
-    {
-      id: 13,
-      company: "Gas natural S.A.S",
-      email: "gas_natural@gmail.com",
-      phone: "3016578474",
-      type: "Cliente",
-    },
-  ];
-
-  const handleChange = (e) => {
-    setFilter(e.target.value.toLowerCase());
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+  /* Con esta funcion agrupamos la data en paginas */
   const getDataPerPage = () => {
     let dataAux = data;
     if (filter !== "") {
@@ -143,6 +38,7 @@ export const Solicitudes = () => {
     return agroupedData;
   };
 
+
   const prevPage = () => {
     if (page > 0) {
       setPage(page - 1);
@@ -155,6 +51,14 @@ export const Solicitudes = () => {
     }
   };
 
+  const handleChange = (e) => {
+    setFilter(e.target.value.toLowerCase());
+  };
+
+  /**
+   * Funcion para abrir o cerrar el sidenav
+   * @param {*} open true para abrir, false para cerrar
+   */
   const toggleDrawer = (open) => (event) => {
     if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
       return;
@@ -163,8 +67,16 @@ export const Solicitudes = () => {
     setDrawerFilter(open);
   };
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
-    <div>
+    <>
       <div className="flex pt-5 pb-8 justify-between gap-20">
         <div className="flex w-full">
           <input
@@ -182,6 +94,7 @@ export const Solicitudes = () => {
           Exportar
         </button>
       </div>
+
       <table className="table">
         <tr>
           <th className="text-xl">Empresa</th>
@@ -197,7 +110,7 @@ export const Solicitudes = () => {
             <td className="row-item text-base">{row.phone}</td>
             <td className="row-item text-base">{row.type}</td>
             <td>
-              <button onClick={() => handleOpen(true)}>
+              <button onClick={() => setDrawerFilter(true)}>
                 <VisibilityIcon />
               </button>
             </td>
@@ -205,65 +118,110 @@ export const Solicitudes = () => {
         ))}
       </table>
 
-      <Drawer anchor="right" open={drawerFilter} onClose={toggleDrawer(false)}>
-        <div className="filter-form-container p-8 h-full relative flex flex-col">
-          <div className="flex items-center gap-4 pb-5">
-            <ArrowBackIcon />
-            <span className="text-2xl font-bold">Busqueda</span>
-          </div>
-
-          <form className="p-4 h-full flex flex-col justify-between">
-            <div>
-              <div className="filter-header-title">
-                <h4>Solicitudes</h4>
-              </div>
-              <div className="custom-input-group">
-                <label className="custom-label">Tipo de usuario</label>
-                <input onChange={(e) => handleChange(e)} className="custom-input" />
-              </div>
-              <div className="custom-input-group">
-                <label className="custom-label">Empresa</label>
-                <input onChange={(e) => handleChange(e)} className="custom-input" />
-              </div>
-              <div className="custom-input-group">
-                <label className="custom-label">Correo electronico</label>
-                <input onChange={(e) => handleChange(e)} className="custom-input" />
-              </div>
-              <div className="custom-input-group">
-                <label className="custom-label">Teléfono de contacto</label>
-                <input onChange={(e) => handleChange(e)} className="custom-input" />
-              </div>
-              <div className="custom-input-group">
-                <label className="custom-label">Cargo</label>
-                <input onChange={(e) => handleChange(e)} className="custom-input" />
-              </div>
-              <div className="custom-input-group">
-                <label className="custom-label">Nit</label>
-                <input onChange={(e) => handleChange(e)} className="custom-input" />
-              </div>
-            </div>
-            <div className="flex justify-between px-4 gap-12">
-              <button onClick={() => toggleDrawer(false)} className="btn btn-3 i-w-full" variant="contained">
-                Cancelar
-              </button>
-              <button onClick={() => toggleDrawer(false)} className="btn btn-1 i-w-full" variant="contained">
-                Filtrar
-              </button>
-            </div>
-          </form>
-        </div>
-      </Drawer>
       <Paginator page={page} setPage={setPage} prevPage={prevPage} nextPage={nextPage} pageArray={getDataPerPage()} />
 
+      {/*Area de Drawers*/}
+      <Drawer anchor="right" open={drawerFilter} onClose={toggleDrawer(false)}>
+        <FiltroSolicitudes toggleDrawer={toggleDrawer} handleChange={handleChange} />
+      </Drawer>
+
       {/*Area de Modales*/}
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        <h1>asdsa</h1>
-      </Modal>
-    </div>
+      <button onClick={() => openModal()}>Ver modal</button>
+      <UsuarioAprobado modalIsOpen={modalIsOpen} closeModal={closeModal} />
+    </>
   );
 };
+
+const data = [
+  {
+    id: 1,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Proveedor",
+  },
+  {
+    id: 2,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Cliente/Proveedor",
+  },
+  {
+    id: 3,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Proveedor",
+  },
+  {
+    id: 4,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Cliente",
+  },
+  {
+    id: 5,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Proveedor",
+  },
+  {
+    id: 6,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Proveedor",
+  },
+  {
+    id: 7,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Cliente/Proveedor",
+  },
+  {
+    id: 8,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Proveedor",
+  },
+  {
+    id: 9,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Cliente",
+  },
+  {
+    id: 10,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Cliente",
+  },
+  {
+    id: 11,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Cliente",
+  },
+  {
+    id: 12,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Cliente",
+  },
+  {
+    id: 13,
+    company: "Gas natural S.A.S",
+    email: "gas_natural@gmail.com",
+    phone: "3016578474",
+    type: "Cliente",
+  },
+];

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Sidebar.scss";
 import logo from "../../assets/img/common/logo.png";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import active_users from "../../assets/img/common/active_users.svg";
 import active_contact from "../../assets/img/common/active_contact.svg";
@@ -21,7 +21,7 @@ export const Sidebar = () => {
   return (
     <div className="sidebar flex flex-col pt-8">
       <div className="flex justify-center align-middle">
-        <img src={logo} />
+        <img src={logo} alt=""/>
       </div>
       <ul className="mt-7 flex flex-col">
         <li>
