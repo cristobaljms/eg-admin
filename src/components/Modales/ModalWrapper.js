@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 
-Modal.defaultStyles.overlay.backgroundColor = "rgba(0,0,0,0.3)";
+Modal.defaultStyles.overlay.backgroundColor = "rgba(0,0,0,0.4)";
 
 const customStyles = {
   content: {

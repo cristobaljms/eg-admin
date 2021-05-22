@@ -1,0 +1,20 @@
+@import "./colors";
+
+.header-underline {
+  &-1 {
+    border-bottom: 2px solid $green-100;
+    color: $green-100;
+    padding: 5px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32.78px;
+    width: 100%;
+  }
+
+  &-2 {
+    color: #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    margin-bottom: 40px;
+  }
+}

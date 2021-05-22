@@ -3,6 +3,7 @@ $orange-100: #edac00;
 $gray-100: #aaaaaa;
 $gray-200: #eeeeee;
 $gray-300: #444444;
+$red-100: #d13c16;
 
 .bg-green-100 {
   background-color: $green-100;
@@ -10,9 +11,28 @@ $gray-300: #444444;
 .bg-orange-100 {
   background-color: $orange-100;
 }
+.bg-gray-100 {
+  background-color: $gray-100;
+}
+.bg-gray-200 {
+  background-color: $gray-200;
+}
+
+
+
+
 .color-green-100 {
   color: $green-100;
 }
 .color-orange-100 {
   color: $orange-100;
+}
+.color-gray-100 {
+  color: $gray-100;
+}
+.color-gray-200 {
+  color: $gray-200;
+}
+.color-red-100 {
+  color: $red-100;
 }
