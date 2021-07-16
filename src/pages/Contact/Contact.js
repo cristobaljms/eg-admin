@@ -7,8 +7,8 @@ export const Contact = () => {
   const [tabValue, setTabValue] = React.useState(0);
 
   return (
-    <div>
-      <div className="w-full">
+    <div className="h-full">
+      <div className="w-full h-full">
         <ul className="tab-list flex gap-8">
           <li
             onClick={() => setTabValue(0)}
@@ -23,7 +23,7 @@ export const Contact = () => {
             Preguntas frecuentes
           </li>
         </ul>
-        <div className="tab-content">{tabValue === 0 && <Pqrs />}</div>
+        <div className="tab-content h-full">{tabValue === 0 && <Pqrs />}</div>
         <div className="tab-content">{tabValue === 1 && <Faq />}</div>
       </div>
     </div>

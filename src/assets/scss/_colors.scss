@@ -1,12 +1,18 @@
 $green-100: #3ea635;
+$green-200: #dce3db;
 $orange-100: #edac00;
 $gray-100: #aaaaaa;
 $gray-200: #eeeeee;
+$gray-300: #f9f9f9c7;
+
 $gray-300: #444444;
 $red-100: #d13c16;
 
 .bg-green-100 {
   background-color: $green-100;
+}
+.bg-green-200 {
+  background-color: $green-200;
 }
 .bg-orange-100 {
   background-color: $orange-100;
@@ -17,12 +23,15 @@ $red-100: #d13c16;
 .bg-gray-200 {
   background-color: $gray-200;
 }
-
-
-
+.bg-gray-300 {
+  background-color: $gray-300;
+}
 
 .color-green-100 {
   color: $green-100;
+}
+.color-green-200 {
+  color: $green-200;
 }
 .color-orange-100 {
   color: $orange-100;
